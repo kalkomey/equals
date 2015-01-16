@@ -40,20 +40,20 @@ node app.js
 
 ## Options
 
-### rootUrls (array)
+### rootUrls(array)
 Specify two root urls without the protocol
 
-### pages (array)
+### pages(array)
 Pages that will be appended to the root url and compared. Trailing slash on the page is required if that page redirects to another page e.g to the https version of the page. PhantomJS does not handle redirects very well.
 
 ### viewport(object)
 Specify the height and the width of the viewport.
 
 
-### screenshotFolder (string)
+### screenshotFolder(string)
 Equals will take screenshots and store them in the folder you specify within the current directory.
 
-### logfile (string)
+### logfile(string)
 All errors are logged to this file within the current directory.
 
 
