@@ -27,7 +27,7 @@ Setup your config file (options explained in detail, in the next section)
   viewport: {
     width: 1200
   },
-  screenshotFolderName: 'screenshots',
+  screenshotFolder: 'screenshots',
   logfile: 'log'
 ````
 
@@ -50,7 +50,7 @@ Pages that will be appended to the root url and compared. Trailing slash on the 
 Specify the height and the width of the viewport.
 
 
-### screenshotFolderName
+### screenshotFolder
 Equals will take screenshots and store them in the folder you specify for the screenshotsFolderName within the current directory.
 
 ### logfile
