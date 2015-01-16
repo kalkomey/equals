@@ -25,7 +25,8 @@ Setup your config file (options explained in detail, in the next section)
   rootUrls: ['qa1.boat-ed.com/', 'www.boat-ed.com/'],
   pages: ['texas/'], 
   viewport: {
-    width: 1200
+    width: 1200, 
+    height: 600
   },
   screenshotFolder: 'screenshots',
   logfile: 'log'
