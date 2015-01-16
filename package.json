@@ -1,0 +1,24 @@
+{
+  "name": "equals",
+  "version": "1.0.0",
+  "description": "Compare two two webpages for differences",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aziz Punjani",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "~1.0",
+    "colors": "^1.0.3",
+    "imagediff": "^1.0.7",
+    "mkdirp": "^0.5.0",
+    "nightmare": "^1.6.5"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "equals",
+    "compare",
+    "diff"
+  ]
+}
