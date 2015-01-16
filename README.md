@@ -51,7 +51,7 @@ Specify the height and the width of the viewport.
 
 
 ### screenshotFolder
-Equals will take screenshots and store them in the folder you specify for the screenshotsFolderName within the current directory.
+Equals will take screenshots and store them in the folder you specify within the current directory.
 
 ### logfile
 All errors are logged to this file within the current directory.
