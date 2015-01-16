@@ -3,7 +3,7 @@ Compare two web pages for equality. If not equal, a diff image is created.
 
 ##Install
 
-Install node-canvas and all it's dependencies i.e [Cairo](http://cairographics.org)
+Install [node-canvas](https://github.com/Automattic/node-canvas) and all it's dependencies i.e [Cairo](http://cairographics.org)
 
 ````bash 
 wget https://raw.githubusercontent.com/LearnBoost/node-canvas/master/install -O - | sh
