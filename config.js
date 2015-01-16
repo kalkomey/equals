@@ -4,9 +4,9 @@ var config = {
   pages: ['texas/'], 
   viewport: {
     width: 1200, 
-    height: 600
+    height: 800
   },
-  screenshotFolderName: 'screenshots',
+  screenshotFolder: 'screenshots',
   logfile: 'log'
 }; 
 

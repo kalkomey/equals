@@ -2,13 +2,12 @@ var Nightmare = require('nightmare'),
     config = require('./config'), 
     Canvas = require('canvas'),
     diff = require('./lib/diff'),
-    colors = require('colors/safe'),
     fs = require('fs'),
     rootUrls = config.rootUrls,
     pages = config.pages,
     logfile = config.logfile,
     protocol = config.protocol, 
-    screenshotFolderName = config.screenshotFolderName, 
+    screenshotFolder = config.screenshotFolder, 
     snap_count = 0;
 
 
@@ -38,7 +37,7 @@ function snap(page, url) {
       if(err) {
         console.log(err);
       } else {
-        console.log('Completed taking screenshot ' + filePath)
+        console.log('Took screenshot and saved it in --> ' + filePath)
       }
       complete();
     });
@@ -53,16 +52,14 @@ function compareScreenshots() {
         urlTwo = getFilePath(rootUrls[1], page), 
         diffPath = getFilePath('diff/', page);
     
-    console.log('Comparing ' + urlOne + ' to ' + urlTwo);
-    console.log('');
+    console.log('Comparing file ' + urlOne + ' to ' + urlTwo);
     
     diff(urlOne, urlTwo, diffPath, function(success, diff){
       if (success) {
         console.log('Equal ' + urlOne + ' and ' + urlTwo);
       } else {
-        console.log('Not equal ' + urlOne + ' and ' + urlTwo);
-        console.log("Diff image has been created " + diff);
-        console.log('');
+        console.log('Screenshots are not equal');
+        console.log("Diff image has been created " + diff + '\n');
       }
     });
 
@@ -72,17 +69,16 @@ function compareScreenshots() {
 function complete() {
   snap_count--;
   if (snap_count == 0) {
-    console.log('');
-    console.log('Completed all screenshots');
+    console.log('Completed all screenshots \n');
     compareScreenshots()
   }
 }
 
 function getFilePath(url, page) {
   var page_without_trailing_slash = page.replace(/\/$/, "");
-  return screenshotFolderName + '/' + url + page_without_trailing_slash + '.png';
+  return screenshotFolder + '/' + url + page_without_trailing_slash + '.png';
 }
-console.log(colors.green('Starting.....'));
+console.log('Starting.....\n');
 
 
 
