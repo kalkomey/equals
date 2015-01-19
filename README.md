@@ -41,7 +41,7 @@ node app.js
 
 ## Options
 
-### protocol: 'string'
+### protocol: string
 Either `https` or `http`.
 
 ### rootUrls: array
