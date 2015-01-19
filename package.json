@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Compare two two webpages for differences",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Aziz Punjani",
   "license": "ISC",
   "dependencies": {
