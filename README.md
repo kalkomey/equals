@@ -42,10 +42,10 @@ node app.js
 ## Options
 
 ### protocol: 'string'
-Either https or http
+Either `https` or `http`.
 
 ### rootUrls: array
-Specify two root urls without the protocol
+Specify two root urls without the protocol.
 
 ### pages: array
 Pages that will be appended to the root url and compared. Trailing slash on the page is required if that page redirects to another page e.g to the https version of the page. PhantomJS does not handle redirects very well.
