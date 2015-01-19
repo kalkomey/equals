@@ -1,6 +1,6 @@
 var config = {
   protocol: 'https',
-  rootUrls: ['dev.boat-ed.com/', 'www.boat-ed.com/'],
+  rootUrls: ['www.boat-ed.com/', 'qa1.boat-ed.com/'],
   pages: ['texas/'], 
   viewport: {
     width: 1200, 

@@ -8,7 +8,7 @@ var Nightmare = require('nightmare'),
     logfile = config.logfile,
     protocol = config.protocol, 
     screenshotFolder = config.screenshotFolder, 
-    snap_count = 0;
+    snapCount = 0;
 
 
 rootUrls.forEach(loopPages);
@@ -30,8 +30,22 @@ function snap(page, url) {
     .on('error', function(){
       fs.appendFile(logfile, JSON.stringify(arguments));
     })
+    .on('consoleMessage', function(msg) {
+      fs.appendFile(logfile, msg);
+    })
     .goto(fullUrl)
     .wait()
+    .evaluate(function(){
+      //Remove chat window before comparing (qa spaces don't have the olark chat window prod does)
+      //Hardcoding remove of the chat window for now, it would be nice to get this in 
+      //the config file to remove any elements specified.
+        
+      var chatWindow = document.querySelector('#habla_topbar_div'), 
+          parentNode = chatWindow.parentNode;
+
+      parentNode.removeChild(chatWindow);
+      return true;
+    })
     .screenshot(filePath)
     .run(function(err, nightmare){
       if(err) {
@@ -42,7 +56,15 @@ function snap(page, url) {
       complete();
     });
 
-    snap_count++;
+    snapCount++;
+}
+
+function complete() {
+  snapCount--;
+  if (snapCount == 0) {
+    console.log('Completed all screenshots \n');
+    compareScreenshots()
+  }
 }
 
 function compareScreenshots() {
@@ -52,13 +74,13 @@ function compareScreenshots() {
         urlTwo = getFilePath(rootUrls[1], page), 
         diffPath = getFilePath('diff/', page);
     
-    console.log('Comparing file ' + urlOne + ' to ' + urlTwo);
+    console.log('Comparing image ' + urlOne + ' to ' + urlTwo);
     
     diff(urlOne, urlTwo, diffPath, function(success, diff){
       if (success) {
-        console.log('Equal ' + urlOne + ' and ' + urlTwo);
+        console.log('Images are the same');
       } else {
-        console.log('Screenshots are not equal');
+        console.log('Images are different');
         console.log("Diff image has been created " + diff + '\n');
       }
     });
@@ -66,19 +88,8 @@ function compareScreenshots() {
   });
 }
 
-function complete() {
-  snap_count--;
-  if (snap_count == 0) {
-    console.log('Completed all screenshots \n');
-    compareScreenshots()
-  }
-}
-
 function getFilePath(url, page) {
   var page_without_trailing_slash = page.replace(/\/$/, "");
   return screenshotFolder + '/' + url + page_without_trailing_slash + '.png';
 }
 console.log('Starting.....\n');
-
-
-
