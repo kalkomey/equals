@@ -39,7 +39,6 @@ function snap(page, url) {
       //Remove chat window before comparing (qa spaces don't have the olark chat window prod does)
       //Hardcoding remove of the chat window for now, it would be nice to get this in 
       //the config file to remove any elements specified.
-        
       var chatWindow = document.querySelector('#habla_topbar_div'), 
           parentNode = chatWindow.parentNode;
 
@@ -69,7 +68,6 @@ function complete() {
 
 function compareScreenshots() {
   pages.forEach(function(page){
-
     var urlOne = getFilePath(rootUrls[0], page),
         urlTwo = getFilePath(rootUrls[1], page), 
         diffPath = getFilePath('diff/', page);
