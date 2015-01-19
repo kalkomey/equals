@@ -3,7 +3,7 @@ Compare two web pages for equality. If not equal, a diff image is created.
 
 ##Install
 
-Install node-canvas and all it's dependencies i.e [Cairo](http://cairographics.org)
+Install [node-canvas](https://github.com/Automattic/node-canvas) and all it's dependencies i.e [Cairo](http://cairographics.org)
 
 ````bash 
 wget https://raw.githubusercontent.com/LearnBoost/node-canvas/master/install -O - | sh
@@ -25,9 +25,10 @@ Setup your config file (options explained in detail, in the next section)
   rootUrls: ['qa1.boat-ed.com/', 'www.boat-ed.com/'],
   pages: ['texas/'], 
   viewport: {
-    width: 1200
+    width: 1200, 
+    height: 600
   },
-  screenshotFolderName: 'screenshots',
+  screenshotFolder: 'screenshots',
   logfile: 'log'
 ````
 
@@ -40,20 +41,20 @@ node app.js
 
 ## Options
 
-### rootUrls
+### rootUrls(array)
 Specify two root urls without the protocol
 
-### pages
+### pages(array)
 Pages that will be appended to the root url and compared. Trailing slash on the page is required if that page redirects to another page e.g to the https version of the page. PhantomJS does not handle redirects very well.
 
-### viewport(width, height)
+### viewport(object)
 Specify the height and the width of the viewport.
 
 
-### screenshotFolderName
-Equals will take screenshots and store them in the folder you specify for the screenshotsFolderName within the current directory.
+### screenshotFolder(string)
+Equals will take screenshots and store them in the folder you specify within the current directory.
 
-### logfile
+### logfile(string)
 All errors are logged to this file within the current directory.
 
 
