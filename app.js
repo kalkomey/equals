@@ -34,6 +34,12 @@ function snap(page, url) {
       fs.appendFile(logfile, msg);
     })
     .goto(fullUrl)
+    
+    if (typeof config.clickElementBeforeScreenshot !== 'undefined') {
+      nightmare.click(config.clickElementBeforeScreenshot);
+    }
+
+  nightmare
     .wait()
     .evaluate(function(){
       //Remove chat window before comparing (qa spaces don't have the olark chat window prod does)
@@ -87,7 +93,7 @@ function compareScreenshots() {
 }
 
 function getFilePath(url, page) {
-  var page_without_trailing_slash = page.replace(/\/$/, "");
+  var page_without_trailing_slash = page.replace(/\/$/, "") || 'index';
   return screenshotFolder + '/' + url + page_without_trailing_slash + '.png';
 }
 console.log('Starting.....\n');
